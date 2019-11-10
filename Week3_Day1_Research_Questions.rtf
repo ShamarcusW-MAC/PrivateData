@@ -1,0 +1,73 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red71\green71\blue71;\red255\green255\blue255;
+\red44\green44\blue44;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c34902\c34902\c34902;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c22745\c22745\c22745;\cssrgb\c0\c0\c0\c84314;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 What is a bundle? What can a bundle contain? A bundle is a mapping to hold various Parcelable types. A bundle aims to store data while an intent aims to transfer data.\
+\
+What is the difference between onPause and onStop? onPause is not moved to back stack and the screen is partially covered by other activity, but onStop is moved to back stack and is fully covered by other activity\
+\
+How to start an activity for getting a result back? You would have to call startActivityForResult() instead of startActivity()\
+\
+Which callback is used get the result back in the above case? onActivityResult\
+\
+What are difference types of Intent? What are the difference between them? When do we use each of them? Implicit and explicit.\
+Implicit intent specifies an action that can invoke any app on the device to be able to perform that action. It\'92s useful when your app can\'92t perform the action but others are able to.\
+Explicit intent is where you define the component that needs to be called. To launch a component such as an activity or service within your app.\
+\
+How to communicate data between activities? Create an intent\
+\
+How to add data to an intent? By using the putExtra methods to save data to the intent, assign the data keys (strings) to access them in the target activity\
+\
+What kind of data can be added to an intent? Primitive data types (int, double, float, String, Bundle, Parcelable, Serializable)\
+\
+How to get the data sent from activity one in activity two? Create an intent in the second activity and initialize it to getIntent(). Once you do that, use the get methods (getStringExtra, getIntExtra, etc.) of the intent to gain access to the data sent from activity one using the keys you assigned them to.\
+\
+What is context? An abstract class in which allows access to resources and classes, up-calls for application-level operations like launching activities, broadcasting/receiving intents\
+\
+Name different kinds of layouts in Android? Relative Layout, Linear Layout, Grid Layout, Constraint Layout\
+
+\f1\b \
+How to send an object through an Intent? First the object has to be either serializable or parcelable. \
+
+\f0\b0 To create a Parcelable class, the class of course must implement Parcelable interface,\cf2  \expnd0\expndtw0\kerning0
+must have a non-null static field of a type that implements parcelable creator interface, and must override the writeToParcel method and write the member variables in parcel. Make sure to read variables in the same sequence in which they are written in parcel. Order of read and write also matters.\
+Then in the activity, create a new class object and use an intent to pass the object..\
+\
+Serializable is more simple to implement. Make sure to create a class in which implements Serializable. Be sure to initialize your variables and the rest is handled by Java. There is no method to implement because serializable is a marker interface. Use the putExtra method to pass the object. \kerning1\expnd0\expndtw0 \
+\cf0 \
+What is Serializable?Serializable is a Java interface. Reflection is used, and it can be a bit of a slow process but is easier to implement\
+\
+What is Parcelable? Parcelable is also a Java interface, but it doesn\'92t use reflection, instead goes a more explicit direction.\
+\
+Which is better and why? Parcelable is faster and more efficient\
+\
+How can an object class be Serializable or Parcelable? Explain in detail the methods to implement if any?\
+\
+Can we avoid implementing methods using Parcelable? No Parcelable use methods to help you save all of your values. \cf2 T\cb4 \expnd0\expndtw0\kerning0
+hese methods are how parcelable deconstructs the object in one activity and reconstructs it in another.
+\fs27 \cb1 \
+
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\
+What are launch modes? Explain each one of them in detail.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb4 \expnd0\expndtw0\kerning0
+1. standard\cb1 \
+\cb4 This is the default launch mode of an activity (If not specified). It creates a new instance of an activity in the task from which it was started. Multiple instances of the activity can be created and multiple instances can be added to the same or different tasks. In other words you can create the same activity multiple times in the same task as well as in different tasks.\
+\
+2. singleTop\cb1 \
+\cb4 In this launch mode if an instance of activity already exists at the top of the current task, a new instance will not be created and Android system will route the intent information through onNewIntent(). If an instance is not present on top of task then new instance will be created.\
+\
+3. singleTask\cb1 \
+\cb4 In this launch mode a new task will always be created and a new instance will be pushed to the task as the root one. If an instance of activity exists on the separate task, a new instance will not be created and Android system routes the intent information through onNewIntent() method. At a time only one instance of activity will exist.\
+\
+4. singleInstance\cb1 \
+\cb4 This launch mode is only used in the applications that has only one activity. It is similar to singleTask except that no other activities will be created in the same task. Any other activity started from here will create in a new task.\
+\cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 What is back stack?The order at which each activity is opened, so if the user presses the back button, the activity is finished and popped off of the stack. }
